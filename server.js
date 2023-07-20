@@ -2,7 +2,6 @@ const { json } = require('express');
 const express = require('express');
 const connectDB = require('./config/ConnectionDb');
 const errorHandler = require('./middleware/errorHandler');
-const homeMiddleware = require('./middleware/homeMiddleware');
 const dotenv=require("dotenv").config();
 
 const app = express();
@@ -12,7 +11,9 @@ connectDB();
 
  // or any port of your choice
 app.use(express.json());
-app.use("/",homeMiddleware);
+app.use("/",(req,res)=>{
+  res.send("connected to server");
+});
 app.use("/api/users",require("./routes/userRoutes"));
 app.use("/api/experts",require("./routes/expertRoute"));
 app.use("/api/otp", require("./routes/otpRoutes")); 
