@@ -12,7 +12,7 @@ connectDB();
  // or any port of your choice
 app.use(express.json());
 app.use("/",(req,res)=>{
-  res.send("connected to server");
+  res.send("sob thick ache, request pathaw");
 });
 app.use("/api/users",require("./routes/userRoutes"));
 app.use("/api/experts",require("./routes/expertRoute"));
