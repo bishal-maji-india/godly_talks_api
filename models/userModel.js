@@ -10,7 +10,6 @@ const userSchema=mongoose.Schema({
     phone: {
         type: String,
         required: [true,"Phone number is required"],
-        unique:[true,"Phone Number should be unique"],
         validate: {
           validator: (value) => {
             try {

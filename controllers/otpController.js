@@ -13,7 +13,8 @@ const sendOTP = asyncHandler(async (req, res) => {
   const phone = req.body.phone;
 
   if (!phone) {
-    return res.status(400).json({ status: "error", message: "Something is missing in your request" });
+    res.status(400);
+    throw new Error("Something is missing in your request");
   }
 
   // Generate a random OTP (you can use your own OTP generation logic)

@@ -13,7 +13,9 @@ const registerExpert = asyncHandler(async (req, res) => {  const {
   if (!phone || !name || !gender || !address || !city || !pincode ||
     !experience || !charge ||  
     !language || !profile_pic || !location) {
-    return res.status(400).json({ status:"error", message:"All fields are required" });
+      res.status(400);
+      throw new Error("All fields are required");
+  
   }
 
   let expert = await Expert.findOne({ phone });

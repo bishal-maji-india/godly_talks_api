@@ -12,14 +12,18 @@ const loginUser = asyncHandler(async (req, res) => {
  
 
   if (!phone || !otp) {
-    return res.status(400).json({ success: false, message: "Something is missing in your request" });
+    res.status(400);
+    throw new Error("All fields are required");
+    // return res.status(400).json({ success: false, message: "Something is missing in your request" });
   }
 
 //now here we will check the opt from the backend
   let user = await User.findOne({ phone });
 
   if (!user) {
-   return res.status(500).json({ success: false, message:"Failed to add a new user"});
+    res.status(500);
+    throw new Error("Failed to add a new user");
+  //  return res.status(500).json({ success: false, message:"Failed to add a new user"});
   }
   if(user.otp!=otp){
     return res.status(401).json({ success: false, message:"OTP did not matched"});
