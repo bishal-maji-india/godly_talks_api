@@ -11,9 +11,9 @@ connectDB();
 
  // or any port of your choice
 app.use(express.json());
-app.use("/",(req,res)=>{
-  res.send("sob thick ache, request pathaw");
-});
+// app.use("/",(req,res)=>{
+//   res.send("sob thick ache, request pathaw");
+// });
 app.use("/api/users",require("./routes/userRoutes"));
 app.use("/api/experts",require("./routes/expertRoute"));
 app.use("/api/otp", require("./routes/otpRoutes")); 
